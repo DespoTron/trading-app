@@ -5,7 +5,7 @@ export default () => {
     <div className="header__wrapper">
       {/* logo */}
       <div className="header__logo">
-        TEST
+        <img src="images/robinhood.svg" width={25} />
       </div>
       {/* search */}
       {/* menu items */}
