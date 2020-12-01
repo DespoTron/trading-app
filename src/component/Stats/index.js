@@ -1,7 +1,26 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import './styles.css'
 
+const TOKEN  = "bv3abn748v6v86e863tg";
+const BASE_URL = "https://finnhub.io/api/v1/quote";
+
 export default () => {
+
+  const [stockData, setStockData] = useState([])
+
+  const getStockData = (stock) => {
+    return axios
+      .get(`${BASE_URL}?symbol=${stock}$&token=${TOKEN}`)
+      .catch((error) => {
+        console.error("Error", error.message);
+      })
+  }
+
+  useEffect(() => {
+
+  }, [])
+
   return (
     <div className="stats">
       <div className="stats__container">
