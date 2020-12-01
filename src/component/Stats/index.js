@@ -11,14 +11,32 @@ export default () => {
 
   const getStockData = (stock) => {
     return axios
-      .get(`${BASE_URL}?symbol=${stock}$&token=${TOKEN}`)
+      .get(`${BASE_URL}?symbol=${stock}&token=${TOKEN}`)
       .catch((error) => {
         console.error("Error", error.message);
       })
   }
 
   useEffect(() => {
+    let tempStockData = [];
+    const stockList = ["AAPL", "MSFT", "TSLA", "FB", "BABA", "UBER", "DIS", "SBUX"];
+    let promises = [];
+    stockList.map((stock) => {
+      promises.push(
+        getStockData(stock)
+        .then((res) => {
+          tempStockData.push({
+            name: stock,
+            ...res.data
+          });
+        })
+      )
+    });
 
+    Promise.all(promises).then(() =>{
+      setStockData(tempStockData)
+      console.log(tempStockData);
+    })
   }, [])
 
   return (
