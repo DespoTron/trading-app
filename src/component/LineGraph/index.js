@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {Line} from 'react-chartjs-2';
+import './styles.css'
 
 export default () => {
 
+  const [graphData, setGraphData] = useState([])
   const data = [{
     x: 10,
     y: 20
@@ -14,6 +16,23 @@ export default () => {
     y: 4
   }]
 
+  const createMockData = () => {
+    let data = [];
+    let value = 50;
+    for(let i = 0; i < 366; i++) {
+      let date = new Date();
+      date.setHours(0,0,0,0);
+      date.setDate(i);
+      value += Math.round((Math.random() < 0.5 ? 1 : 0) * Math.random() * 10);
+      data.push({x: date, y: value})
+    }
+    setGraphData(data);
+  }
+
+  useEffect(() => {
+    createMockData();
+  }, [])
+
   return (
     <div className="linegraph">
       <Line 
@@ -21,8 +40,8 @@ export default () => {
           datasets: [
             {
               type: "line",
-              data: data,
-              backgroundColor: "black",
+              data: graphData,
+              backgroundColor: "",
               borderColor: "#5AC53B",
               borderWidth: 2,
               pointBorderColor: 'rgba(0, 0, 0, 0)',
@@ -34,14 +53,31 @@ export default () => {
           ]
         }}
         options={{
+          maintainAspectRatio: false,
           legend: {
             display: false
           },
+          tooltips: {
+            mode: "index",
+            intersect: false
+          },
           scales: {
-            yAxes: [{
+            xAxes: [
+              {
+                type: 'time',
+                time: {
+                  format: "MM/DD/YY",
+                  tooltipFormat: "ll",
+                },
+                ticks: {
+                  display: false,
+                }
+              },
+            ],
+            yAxes: [
+              {
               ticks: {
                 display: false,
-                beginAtZero: true
               }
             }]
           }
