@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import './styles.css'
 
-const TOKEN  = "bv3abn748v6v86e863tg";
-const BASE_URL = "https://finnhub.io/api/v1/quote";
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+const authToken = process.env.REACT_APP_FINN_HUB_TOKEN;
 
 export default () => {
 
@@ -11,7 +11,7 @@ export default () => {
 
   const getStockData = (stock) => {
     return axios
-      .get(`${BASE_URL}?symbol=${stock}&token=${TOKEN}`)
+      .get(`${BASE_URL}?symbol=${stock}&token=${authToken}`)
       .catch((error) => {
         console.error("Error", error.message);
       })
