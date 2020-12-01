@@ -80,19 +80,27 @@ export default () => {
         </div>
         <div className="stats__content">
           <div className="stats__rows"></div>
+          {myStocks.map((stock) => (
+            <StatsRow 
+              key={stock.data.ticker}
+              name={stock.data.ticker}
+              openPrice={stock.info.o}
+              shares={stock.data.shares}
+              price={stock.info.c}
+            />
+          ))}
         </div>
         <div className="stats__header">
           <p>Lists</p>
         </div>
         <div className="stats__content">
           <div className="stats__rows">
-            {myStocks.map((stock) => (
+            {stockData.map((stock) => (
               <StatsRow
-                key={stock.data.ticker}
-                name={stock.data.ticker}
-                openPrice={stock.info.o}
-                shares={stock.data.shares}
-                price={stock.info.c}
+                key={stock.name}
+                name={stock.name}
+                openPrice={stock.o}
+                price={stock.c}
               />
             ))}
           </div>
