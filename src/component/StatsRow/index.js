@@ -1,19 +1,24 @@
 import React from 'react'
 import './styles.css'
 
-export default () => {
+export default (props) => {
+
+  const percentage = ((props.price - props.openPrice)/props.openPrice) * 100;
+
   return (
     <div className="row">
       <div className="row__intro">
-        <h1>AAPL</h1>
-        <p>200 shares</p>
+        <h1>{props.name}</h1>
+        <p>{props.shares &&
+          (props.shares + " shares")
+          } </p>
       </div>
       <div className="row__chart">
-        {/* <img src={StockChart} height={16} /> */}
+        <img src="/images/stock.svg" height={16} />
       </div>
       <div className="row__numbers">
-        <p className="row__price">$200</p>
-        <p className="row__percentage">+200%</p>
+        <p className="row__price">{props.price}</p>
+        <p className="row__percentage">+{Number(percentage).toFixed(2)}%</p>
       </div>
 
     </div>

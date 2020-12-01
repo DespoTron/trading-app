@@ -63,10 +63,10 @@ export default () => {
           <div className="stats__rows">
             {stockData.map((stock) => (
               <StatsRow
-                // key={stock.name}
-                // name={stock.name}
-                // openPrice={stock.o}
-                // price={stock.c}
+                key={stock.name}
+                name={stock.name}
+                openPrice={stock.o}
+                price={stock.c}
               />
             ))}
           </div>
