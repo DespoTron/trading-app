@@ -1,12 +1,35 @@
 import React from 'react'
 import './styles.css'
+import { db } from '../../firebase'
 
 export default (props) => {
 
   const percentage = ((props.price - props.openPrice)/props.openPrice) * 100;
 
+  const fakeBuyStock = () => {
+    db.collection('myStocks')
+    .where("ticker", "==", props.name)
+    .get()
+    .then((querySnapshot) => {
+      if(!querySnapshot.empty) {
+        // update the record
+        querySnapshot.forEach(function(doc) {
+          //doc.data() is never undefined for query doc snapshots
+          db.collection('myStocks')
+          .doc(doc.id)
+          .update({
+            shares: doc.data().shares+=1
+          })
+        });
+      } else {
+        // Add a new record
+        console.log("Not available");
+      }
+    })
+  }
+
   return (
-    <div className="row">
+    <div className="row" onClick={fakeBuyStock}>
       <div className="row__intro">
         <h1>{props.name}</h1>
         <p>{props.shares &&
