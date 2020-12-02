@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { LineGraph, TimeLine } from 'component'
-import Chip from '@material-ui/core/Chip';
-import Avatar from '@material-ui/core/Avatar';
+import { LineGraph, TimeLine, Chip } from 'component'
+// import Chip from '@material-ui/core/Chip';
+// import Avatar from '@material-ui/core/Avatar';
 import "./styles.css";
 
 
@@ -51,12 +51,8 @@ export default () => {
           <div className="newsfeed__popularlists__badges">
             {popularTopics.map((topic) => (
               <Chip 
-                className="topic__badge"
-                variant="outlined"
                 label={topic}
-                avatar={<Avatar
-                  src={`https://avatars.dicebear.com/api/human/${topic}.svg`}
-                 />}
+                image={`https://avatars.dicebear.com/api/human/${topic}.svg`}
               />
             ))}
           </div>
