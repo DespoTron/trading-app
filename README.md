@@ -10,6 +10,16 @@ A simple Robinhood clone, it's an investing application that allows users to pur
   <li>CSS</li>
 </ul>
 
+# Stretch Goals
+
+<ul>
+  <li>Change color when stock is negative</li>
+  <li>Dynamic Chart Rendering</li>
+  <li>Get all pages to work</li>
+  <li>Get Dynamic rendering of timeline</li>
+  <li>Logging Auth</li>
+</ul>
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -21,3 +31,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+## Screen Shots of Trading App Clone
+!["One Page Wonder"](https://github.com/DespoTron/trading-app/blob/master/docs/TradingClone.png?raw=true)
