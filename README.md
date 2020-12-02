@@ -1,6 +1,14 @@
-# Getting Started with Create React App
+# Trading-App
+A simple Robinhood clone, it's an investing application that allows users to purchase stocks in publicly traded companies.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Tech Stack
+<ul>
+  <li><b>Frontend:</b> React</li>
+  <li><b>Backend:</b> Firebase</li>
+  <li>Finn Hub Api</li>
+  <li>React chartsjs</li>
+  <li>CSS</li>
+</ul>
 
 ## Available Scripts
 
