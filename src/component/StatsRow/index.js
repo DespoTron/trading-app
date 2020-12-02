@@ -3,7 +3,6 @@ import './styles.css'
 import { db } from '../../firebase'
 
 export default (props) => {
-
   const percentage = ((props.price - props.openPrice)/props.openPrice) * 100;
 
   const fakeBuyStock = () => {
@@ -22,8 +21,11 @@ export default (props) => {
           })
         });
       } else {
-        // Add a new record
-        console.log("Not available");
+        db.collection('myStocks')
+        .add({
+          ticker: props.name,
+          shares: 1
+        })
       }
     })
   }
@@ -41,7 +43,7 @@ export default (props) => {
       </div>
       <div className="row__numbers">
         <p className="row__price">{props.price}</p>
-        <p className="row__percentage">+{Number(percentage).toFixed(2)}%</p>
+        <p className="row__percentage">{Number(percentage).toFixed(2)}%</p>
       </div>
 
     </div>
