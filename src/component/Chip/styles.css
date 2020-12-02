@@ -1,5 +1,6 @@
 .newsfeed__popularlists__badges {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .chip {
@@ -7,7 +8,7 @@
   height: 30px;
   border: 1px solid #31363a;
   align-items: center;
-  border-radius: 15px;
+  border-radius: 18px;
   padding: 3px 0px;
   margin-right: 8px;
   margin-bottom: 8px;
